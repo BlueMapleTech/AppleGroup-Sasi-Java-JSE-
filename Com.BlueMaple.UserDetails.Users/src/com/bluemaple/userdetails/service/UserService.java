@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 import com.bluemaple.userdetails.controller.UserController;
 import com.bluemaple.userdetails.dao.UserDao;
 import com.bluemaple.userdetails.model.User;
@@ -30,9 +31,28 @@ public class UserService implements Serializable {
 	 * return userDao.retriveUser(); }
 	 */
 
-	public List<User> retrive() throws SQLException {
-		//List<User> dbDatas = userDao.retriveUser();
+	public List<User> retrive() throws SQLException, ClassNotFoundException {
+		userDao.retriveUser();
+		// List<User> dbDatas = userDao.retriveUser();
 		return userDao.retriveUser();
+	}
+
+	public List<User> login() throws SQLException, ClassNotFoundException {
+		// userDao.loginDetails();
+		List<User> loginNames = userDao.loginDetails();
+		return loginNames;
+	}
+
+	public int update(User user0) throws SQLException, ClassNotFoundException {
+		// userDao.updateUser(user0);
+		int number = userDao.updateUser(user0);
+		return number;
+
+	}
+
+	public void delete(User userDelete) throws ClassNotFoundException,
+			SQLException {
+		userDao.deleteUser(userDelete);
 	}
 
 }
